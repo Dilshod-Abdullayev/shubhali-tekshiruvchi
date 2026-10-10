@@ -1,0 +1,71 @@
+# Oq ro'yxat — rasmiy domenlar. Subdomenlar ham kiradi (my.gov.uz ← gov.uz).
+# Har domen 2026-10-10 da ochib tekshirildi (sayt sarlavhasi yoki DNS javobi).
+# Oq ro'yxatdagi havola matndagi firibgarlik belgilarini YOPMAYDI: «payme.uz» havolasi bo'lsa ham,
+# matnda SMS kod so'ralsa — baribir xavfli.
+
+# Davlat
+gov.uz
+lex.uz
+csec.uz
+# Ochiq byudjet (Moliya vazirligi) — qo'shnilar «ovoz bering» deb shu havolani yuboradi; bu firibgarlik emas
+openbudget.uz
+
+# To'lov tizimlari va karta
+click.uz
+payme.uz
+paynet.uz
+oson.uz
+uzcard.uz
+humocard.uz
+apelsin.uz
+
+# Markaziy bank va banklar
+cbu.uz
+nbu.uz
+sqb.uz
+asakabank.uz
+ipotekabank.uz
+hamkorbank.uz
+kapitalbank.uz
+aloqabank.uz
+agrobank.uz
+xb.uz
+infinbank.com
+ipakyulibank.uz
+trastbank.uz
+davrbank.uz
+anorbank.uz
+tbcbank.uz
+octobank.uz
+turonbank.uz
+aab.uz
+uzumbank.uz
+garantbank.uz
+hayotbank.uz
+mkbank.uz
+poytaxtbank.uz
+
+# Do'kon va marketpleys
+uzum.uz
+korzinka.uz
+olx.uz
+
+# Yangiliklar
+kun.uz
+daryo.uz
+gazeta.uz
+spot.uz
+
+# Xalqaro. Diqqat: docs/sites/drive.google.com, forms.gle kabi har kim sahifa ochadigan joylar oq ro'yxatdan
+# USTUN tekshiriladi (bot/havola.py, OCHIQ_HOSTING) — Google Forms'dagi karta so'rovchi forma «rasmiy» deb o'tmaydi.
+telegram.org
+youtube.com
+youtu.be
+google.com
+instagram.com
+facebook.com
+whatsapp.com
+zoom.us
+apple.com
+microsoft.com
+wikipedia.org

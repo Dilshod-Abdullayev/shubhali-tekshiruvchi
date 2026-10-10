@@ -1,0 +1,29 @@
+# Qora ro'yxat — firibgarlikda ishlatilgani ommaviy manbada aniq ko'rsatilgan domen va Telegram akkauntlar.
+# Bir qatorga bitta. Domen subdomenlari bilan birga bloklanadi (masalan, x.omduzb.com ham).
+# Telegram akkaunt yoki bot: @ bilan yoziladi.
+# Har yozuvdan oldin manba izohi bor. Taxmin bilan qo'shilmaydi — faqat manbada nomi yozilgan bo'lsa.
+#
+# Holat (2026-10-10):
+# - fake.cyber102.uz hozir ochilmaydi (DNS javob bermaydi) — undan ro'yxat olib bo'lmadi.
+# - spot.uz 2026-07-10 maqolasi (soxta Markaziy bank botlari) botlarning NOMINI keltirmaydi,
+#   faqat sxemani tasvirlaydi. Shuning uchun sxema matn qoidalariga kiritildi (bot/qoidalar.py, RASMIY_NIQOB),
+#   bot nomlari esa yangi manba chiqqanda shu yerga qo'shiladi.
+# - 2026-10-10 qidiruv: Kiberxavfsizlik markazi kanali (t.me/s/cyber_csec_uz, 2026-06-29 — 10-09 dagi 143 post),
+#   kun.uz (2026-07-18 soxta MyGov), F6 hisoboti (2026-09-14, 360+ domen) va The Record — birortasi ham
+#   domen NOMINI keltirmaydi. Shuning uchun asosiy kenglik xalqaro ochiq bazadan keladi:
+#   `python -m bot.royxat` → data/tashqi_qora.txt (Phishing.Database ACTIVE + URLhaus, ~386 ming domen,
+#   shu jumladan .uz zonasidagi 333 ta faol fishing manzil). Bu fayl faqat O'zbekistonga xos, manbasi aniq yozuvlar uchun.
+# - Eski (2023) yozuvlar DNS holati 2026-10-10: korzinka-online.uz, anorbank.uz-derart.com,
+#   helpchildren.coqsecu.com — DNS javob bermaydi (o'chgan); omduzb.com — javob beradi. O'chgan domen ham
+#   qoldirildi: firibgarlar eski domenni qayta ro'yxatdan o'tkazishi mumkin, xabardagi eski havola ham xavfli belgi.
+
+# kun.uz, 2023-11-19 «Onlayn qopqon» — soxta supermarket sayti
+korzinka-online.uz
+# kun.uz, 2023-11-19 — soxta xaridor yuborgan «pulni qabul qilish» sayti (anorbank.uz niqobi)
+anorbank.uz-derart.com
+# kun.uz, 2023-11-19 — «har bir bolali oilaga 850 ming so'm» soxta davlat yordami
+helpchildren.coqsecu.com
+# Kiberxavfsizlik markazi (t.me/cyber_csec_uz) — «OMD» moliyaviy piramida sayti
+omduzb.com
+# Phishing.Database ACTIVE (2026-10-10 yuklamasi) — «Uzum» niqobli sayt; DNS 2026-10-10 da javob beradi
+news2023uzumgrm.gxscv.com

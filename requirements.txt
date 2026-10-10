@@ -1,0 +1,2 @@
+# Faqat Telegram bot uchun. Tekshiruvning o'zi (python -m bot.check) qo'shimcha kutubxonasiz ishlaydi.
+python-telegram-bot>=21,<23

@@ -1,0 +1,5 @@
+.venv/
+__pycache__/
+*.pyc
+# python -m bot.royxat yuklaydi (~10 MB, har safar yangilanadi)
+data/tashqi_qora.txt

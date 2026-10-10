@@ -1,0 +1,24 @@
+# Haqiqatda tarqalgan zararli fayl nomlari — Kiberxavfsizlik markazining haftalik
+# «@Cyberqalqonbot ga eng ko'p kelgan virusli ilovalar» postlaridan (t.me/cyber_csec_uz, 2026 fevral–aprel).
+# Bot bu ro'yxatni nomga qarab tekshirmaydi — kengaytma qoidasi (.apk/.exe/...) ularning hammasini ushlaydi.
+# Ro'yxat testlar va README misollari uchun: firibgarlar fayl nomini qanday niqoblashini ko'rsatadi
+# (to'y rasmi, sud chaqiruvi, video, «.pdf.apk» qo'sh kengaytma, kirill harflari bilan yozilgan lotin so'zlar).
+MyGov.apk
+Rasmlar (9).apk
+Мулк Тақиқлари.apk
+ЖаримаСабабТекшир.apk
+Видео (7 шт).apk
+TOY_ALBOMI_2025_+mp4pleer.apk
+Toydan fotolar (28) 15.02.2026.foto.apk
+VIDЕO.20260211.mp4.apk
+Sud qarori28_02_2026.apk
+ДавлатҚарздорларБазаси.apk
+Telegram Premium.apk
+Документ_2026_03_08_154273_PDF.apk
+IIBB CHAQIRUVI6965.jpg.apk
+Yangi_JKX_narxlari_Oʻzbekiston.pdf.apk
+OR Markaziy Banki.apk
+Navro'z_bayrami_tabrik11.apk
+lively-wallpaper-2.1.0.8-installer_4Iz-xQ1.exe
+SUD CHAQIRUVI_238.pdf.apk
+Sizga_Pul_Mukofoti.apk
