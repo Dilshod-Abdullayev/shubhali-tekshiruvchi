@@ -12,7 +12,7 @@ import logging
 import os
 import sys
 
-from telegram import Update
+from telegram import MessageEntity, Update
 from telegram.constants import ChatAction
 from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters
 
@@ -30,13 +30,33 @@ QOLLAB_EMAS = ("Hozircha rasm, ovozli xabar va videoni o'qiy olmayman. Xabardagi
 log = logging.getLogger("shubhali")
 
 
+def _yashirin_havolalar(msg) -> list[str]:
+    """Matnda ko'rinmaydigan havolalar: yozuv ostiga yashirilgan (text_link) va xabar tagidagi tugmalar.
+
+    Firibgar «Rasmlar shu yerda» deb yozib, haqiqiy manzilni yashiradi — msg.text da u yo'q.
+    """
+    urllar = [e.url for e in (*msg.entities, *msg.caption_entities) if e.type == MessageEntity.TEXT_LINK and e.url]
+    if msg.reply_markup:
+        for qator in msg.reply_markup.inline_keyboard:
+            for t in qator:
+                url = t.url or (t.web_app.url if t.web_app else None) or (t.login_url.url if t.login_url else None)
+                if url:
+                    urllar.append(url)
+    return list(dict.fromkeys(urllar))
+
+
+def _toliq_matn(msg, matn: str) -> str:
+    yashirin = _yashirin_havolalar(msg)
+    return f"{matn}\n{' '.join(yashirin)}".strip() if yashirin else matn
+
+
 async def salom(update: Update, _: ContextTypes.DEFAULT_TYPE) -> None:
     await update.effective_message.reply_text(SALOM)
 
 
 async def tekshiruv(update: Update, _: ContextTypes.DEFAULT_TYPE) -> None:
     msg = update.effective_message
-    matn = msg.text or msg.caption or ""
+    matn = _toliq_matn(msg, msg.text or msg.caption or "")
     fayl = msg.document.file_name if msg.document else None
     mime = msg.document.mime_type if msg.document else None
     if not matn.strip() and not fayl:
@@ -51,8 +71,9 @@ async def tekshiruv(update: Update, _: ContextTypes.DEFAULT_TYPE) -> None:
 
 async def qollab_emas(update: Update, _: ContextTypes.DEFAULT_TYPE) -> None:
     msg = update.effective_message
-    if msg.caption:   # rasm/video ostidagi yozuvni baribir tekshiramiz
-        n = await asyncio.to_thread(tekshir, msg.caption)
+    yozuv = _toliq_matn(msg, msg.caption or "")
+    if yozuv:   # rasm/video ostidagi yozuv va yashirin havolalarni baribir tekshiramiz
+        n = await asyncio.to_thread(tekshir, yozuv)
         # Rasmning o'zini o'qimaymiz — yozuv toza chiqsa ham 🟢 bermaymiz (firibgarlik rasm ichida bo'lishi mumkin)
         if n.daraja != "toza":
             await msg.reply_text(n.matn() + "\n\n(Faqat rasm ostidagi yozuv tekshirildi.)")

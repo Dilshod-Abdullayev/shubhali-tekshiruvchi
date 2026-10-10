@@ -13,7 +13,8 @@ from unittest import mock
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 try:
-    from telegram import Chat, Document, Message, MessageEntity, PhotoSize, Update, User, Voice
+    from telegram import (Chat, Document, InlineKeyboardButton, InlineKeyboardMarkup, Message, MessageEntity,
+                          PhotoSize, Update, User, Voice)
     from bot import telegram_bot as tb
 except ImportError:  # kutubxona yo'q
     tb = None
@@ -52,6 +53,21 @@ class Bot(unittest.TestCase):
         doc = Document("f", "u", file_name="Toy rasmlari.apk", mime_type="application/vnd.android.package-archive")
         self.assertTrue(self.yubor(document=doc)[1].startswith("🔴"))
         self.assertTrue(self.yubor(text="Bugun soat 6 da majlis bor")[1].startswith("🟢"))
+
+    def test_yashirin_havola_va_tugma(self):
+        matn = "Toyimizdan rasmlar shu yerda"
+        self.assertTrue(self.yubor(text=matn)[1].startswith("🟢"))   # havolasiz — toza
+        qora = "http://korzinka-online.uz/foto"
+        yashirin = [MessageEntity(MessageEntity.TEXT_LINK, 0, 7, url=qora)]
+        self.assertTrue(self.yubor(text=matn, entities=yashirin)[1].startswith("🔴"))
+        tugma = InlineKeyboardMarkup([[InlineKeyboardButton("Rasmlarni ko'rish", url=qora)]])
+        self.assertTrue(self.yubor(text=matn, reply_markup=tugma)[1].startswith("🔴"))
+        # Rasm ostidagi yashirin havola ham
+        self.assertTrue(self.yubor(photo=[PhotoSize("p", "u", 10, 10)], caption=matn,
+                                   caption_entities=yashirin)[1].startswith("🔴"))
+        # Rasmiy saytga yashirilgan havola — 🟢 qoladi
+        oq = [MessageEntity(MessageEntity.TEXT_LINK, 0, 7, url="https://kun.uz/news")]
+        self.assertTrue(self.yubor(text="Bugungi yangilik shu yerda", entities=oq)[1].startswith("🟢"))
 
     def test_rasm_ovoz_halol_javob(self):
         self.assertEqual(self.yubor(photo=[PhotoSize("p", "u", 10, 10)])[1], tb.QOLLAB_EMAS)

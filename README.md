@@ -9,7 +9,13 @@ Shu xabarni botga yuboring — 10 soniyadan kam vaqtda javob keladi:
 
 Bot hech qachon «100% xavfsiz» demaydi. Xabaringiz hech qayerga saqlanmaydi.
 
-<!-- SKRINSHOT: bot token bilan ishga tushgach, javob rasmini docs/skrinshot.png ga qo'yib, shu yerga ulang. -->
+> 📷 **Skrinshot joyi:** bot Telegram'da ochilgach, javob namunasi rasmi shu yerga qo'yiladi (`docs/skrinshot.png`). Hozircha namuna — terminaldagi javob:
+>
+> ```
+> 🔴 Xavfli
+> SMS yoki tasdiqlash kodini so'rashyapti — firibgarlarning eng asosiy usuli.
+> Nima qilish kerak: Kodni hech kimga aytmang — bank va idoralar hech qachon SMS kod so'ramaydi.
+> ```
 
 ## 3 qadamda ishlatish
 
@@ -24,6 +30,8 @@ Bot hech qachon «100% xavfsiz» demaydi. Xabaringiz hech qayerga saqlanmaydi.
 ---
 
 ## Botni ishga tushiruvchi uchun
+
+Asosiy manba — ochiq ombor: https://github.com/Dilshod-Abdullayev/shubhali-tekshiruvchi (o'zgarish avval shu yerga kiritiladi).
 
 Kompyuterda Python 3.10+ bo'lishi kerak.
 
@@ -48,7 +56,7 @@ Bot o'zi ishga tushmaydi (avtomatik yuklash yo'q) — faqat shu buyruq bilan.
 ### Qanday tekshiradi (arzondan qimmatga)
 
 1. **Fayl:** `.apk`, `.exe`, `.scr`, `.bat` (ham `hujjat.pdf.apk` kabi niqoblangan) → darhol 🔴. Arxiv (`.zip`, `.rar`) → 🟡: ichida dastur yashirilishi mumkin.
-2. **Havola:**
+2. **Havola** (yozuv ostiga yashirilgan havola va xabar tagidagi tugmalar ham — Telegram ularni matnda ko'rsatmaydi):
    - `data/blacklist.txt` (O'zbekistonga xos, manbasi yozilgan) va `data/tashqi_qora.txt` (xalqaro fishing bazasi, ~386 ming domen) → 🔴.
    - Har kim sahifa ochadigan joylar (Google Forms/Sites, tekin hosting) — «rasmiy» emas, alohida belgi.
    - `data/whitelist.txt` (gov.uz, click.uz, payme.uz, banklar…) → belgi qo'shmaydi.
@@ -56,12 +64,12 @@ Bot o'zi ishga tushmaydi (avtomatik yuklash yo'q) — faqat shu buyruq bilan.
 3. **Matn qoidalari** (`bot/qoidalar.py`): kod so'rash, karta, yutuq, «ovoz bering», Markaziy bank/militsiya niqobi, xavfsiz hisob, oldindan to'lov, shoshiltirish… Lotin, kirill va ruscha.
 4. **Noaniq yoki pul haqidagi xabarda AI:** avval FreeLLMAPI (lokal, bepul), javob yaroqsiz bo'lsa — lokal `claude` (obuna). AI'ga yuborishdan oldin karta, telefon va email yashiriladi. AI javob bermasa (o'chiq yoki muddat tugadi) — 🟡, pul haqidagi xabar ham. AI kuchli belgini «toza» deb bekor qila olmaydi.
 
-AI'ni o'chirish: `SHUBHALI_AI=0` yoki `--ai-yoq`.
+AI'ni o'chirish: `SHUBHALI_AI=0` yoki `--ai-yoq`. Bot fonda ishlasa va `claude` login topmasa: `SHUBHALI_CLAUDE_TOKEN_FILE=<obuna tokeni fayli>`.
 
 ### Sinov
 
 ```bash
-python3 -m unittest discover -s tests          # 37 test (Telegram qismi .venv bilan)
+python3 -m unittest discover -s tests          # 38 test (Telegram qismi .venv bilan)
 python3 tests/olchov.py                        # 15 namuna jadvali
 python3 tests/olchov.py tests/yashirin2_namunalar.json --ai
 ```

@@ -22,7 +22,8 @@ from pathlib import Path
 FREELLM_URL = os.environ.get("FREELLMAPI_URL", "http://127.0.0.1:3001")
 FREELLM_MODEL = os.environ.get("FREELLMAPI_MODEL", "auto:jarvis")
 _KALIT_F = Path.home() / ".config" / "freellmapi" / "unified_key"
-_TOKEN_F = Path(os.environ.get("SHUBHALI_CLAUDE_TOKEN_FILE", Path.home() / "Desktop" / "JARVIS" / "voice" / ".claude_token"))
+# Ixtiyoriy: fon jarayonida claude login topilmasa, obuna tokeni fayli (API kalit emas) faqat env orqali beriladi
+_TOKEN_F = os.environ.get("SHUBHALI_CLAUDE_TOKEN_FILE", "")
 
 TIZIM = (
     "Sen O'zbekistondagi firibgarlik xabarlarini aniqlovchi mutaxassissan. Foydalanuvchi o'ziga kelgan xabarni "
@@ -111,9 +112,10 @@ def _claude(prompt: str, timeout: float) -> str:
     env = {k: v for k, v in os.environ.items() if k not in ("CLAUDECODE", "CLAUDE_CODE_ENTRYPOINT", "CLAUDE_CODE_SSE_PORT")}
     env["MAX_THINKING_TOKENS"] = "0"
     if not env.get("CLAUDE_CODE_OAUTH_TOKEN"):
-        # Fon jarayonida (bot) claude login topilmasligi mumkin — Jarvis'dagi obuna tokeni ishlatiladi (API kalit emas)
+        # Fon jarayonida (bot) claude login topilmasligi mumkin — SHUBHALI_CLAUDE_TOKEN_FILE berilgan bo'lsa, shu obuna tokeni
         try:
-            env["CLAUDE_CODE_OAUTH_TOKEN"] = _TOKEN_F.read_text("utf-8").strip()
+            if _TOKEN_F:
+                env["CLAUDE_CODE_OAUTH_TOKEN"] = Path(_TOKEN_F).read_text("utf-8").strip()
         except OSError:
             pass
     cmd = [b, "-p", "--model", os.environ.get("SHUBHALI_CLAUDE_MODEL", "sonnet"), "--tools", "", "--strict-mcp-config",

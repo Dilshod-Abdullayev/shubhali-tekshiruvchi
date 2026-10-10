@@ -17,7 +17,8 @@
 #   helpchildren.coqsecu.com — DNS javob bermaydi (o'chgan); omduzb.com — javob beradi. O'chgan domen ham
 #   qoldirildi: firibgarlar eski domenni qayta ro'yxatdan o'tkazishi mumkin, xabardagi eski havola ham xavfli belgi.
 
-# kun.uz, 2023-11-19 «Onlayn qopqon» — soxta supermarket sayti
+# kun.uz, 2023-11-19 «Onlayn qopqon» (keyingi 3 domen shu maqoladan, 2026-10-10 da tekshirildi): https://kun.uz/news/2023/11/19/onlayn-qopqon-ommalashgan-virtual-firibgarlik-turlari-va-ulardan-qanday-himoyalanish-kerak
+# — soxta supermarket sayti
 korzinka-online.uz
 # kun.uz, 2023-11-19 — soxta xaridor yuborgan «pulni qabul qilish» sayti (anorbank.uz niqobi)
 anorbank.uz-derart.com
